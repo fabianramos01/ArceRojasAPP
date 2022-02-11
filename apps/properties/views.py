@@ -6,7 +6,7 @@ from apps.properties.models import Property
 
 
 def home(request):
-    paginator = Paginator(Property.objects.all(), 15)
+    paginator = Paginator(Property.objects.all().order_by('-registration_number'), 15)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home.html', {'properties': page_obj})
