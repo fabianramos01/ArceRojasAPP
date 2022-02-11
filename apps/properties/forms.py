@@ -16,9 +16,9 @@ class PropertyForm(ModelForm):
     def clean(self):
         clean_data = super().clean()
         user = None
-        if clean_data.get('type') == 1 and clean_data.get('address'):
+        if clean_data.get('type') == 1 and not clean_data.get('address'):
             raise ValidationError('La dirección es requerida')
-        elif clean_data.get('type') == 2 and clean_data.get('name'):
+        elif clean_data.get('type') == 2 and not clean_data.get('name'):
             raise ValidationError('El nombre es requerido')
         return clean_data
 
@@ -39,7 +39,7 @@ class PropertyForm(ModelForm):
             'address': TextInput(attrs={'class': 'form-control'}),
             'name': TextInput(attrs={'class': 'form-control'}),
             'type': Select(attrs={'class': 'form-select'}),
-            'owners': Select(attrs={'class': 'form-select basic-multiple', 'multiple': 'multiple'}),
+            'owners': SelectMultiple(attrs={'class': 'basic-multiple', 'multiple': 'multiple'}),
         }
 
 

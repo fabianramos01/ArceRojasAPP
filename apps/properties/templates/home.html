@@ -31,14 +31,22 @@
             <tbody>
 
             {% if not properties %}
-                <h2>No existen propiedades</h2>
+                <h2>No existen predios</h2>
             {% else %}
                 {% for i in properties %}
                     <tr>
                         <td>{{ i.registration_number }}</td>
                         <td>{{ i.cadastral_id }}</td>
-                        <td>{{ i.address }}</td>
-                        <td>{{ i.name }}</td>
+                        {% if i.address %}
+                            <td>{{ i.address }}</td>
+                        {% else %}
+                            <td> - </td>
+                        {% endif %}
+                        {% if i.name %}
+                            <td>{{ i.name }}</td>
+                        {% else %}
+                            <td> - </td>
+                        {% endif %}
                         <td>{{ i.get_type_display }}</td>
                         <td>
                             {% for o in i.owners.all %}
