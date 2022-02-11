@@ -1,0 +1,46 @@
+{% extends 'main/index.html' %}
+
+
+{% block header %}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+{% endblock header %}
+
+{% block title %}
+    Predio
+{% endblock title %}
+
+{% block body %}
+    <div class="container">
+        <div class="card d-grid gap-2 col-6 mx-auto">
+            <h5 class="card-header">
+                Predio
+            </h5>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-secondary">Guardar</button>
+                    </div>
+                </form>
+{#                <select class="basic-multiple" name="states[]" multiple="multiple">#}
+{#                    <option value="AL">Alabama</option>#}
+{#                    ...#}
+{#                    <option value="WY">Wyoming</option>#}
+{#                </select>#}
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.basic-multiple').select2();
+        });
+    </script>
+
+{% endblock body %}

@@ -1,0 +1,27 @@
+{% extends 'main/index.html' %}
+
+{% block title %}
+    Propietario
+{% endblock title %}
+
+{% block body %}
+    <div class="container">
+        <div class="card d-grid gap-2 col-6 mx-auto">
+            <h5 class="card-header">
+                Propietario
+            </h5>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-secondary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
